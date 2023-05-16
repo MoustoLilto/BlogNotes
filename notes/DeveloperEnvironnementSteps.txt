@@ -1,0 +1,97 @@
+Actions Réalisé pour configurer mon Mac book:
+
+-Installation de homeBrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+(echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /.zprofile
+
+-Telechargement de Sublime text
+ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
+
+-Affichage des documents cachés:
+defaults write com.apple.finder AppleShowAllFiles YES
+
+-Installation de Powerline Fonts
+git clone "https://github.com/powerline/fonts"
+./install.sh
+
+-Installation de zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+zsh --version
+
+-change of .zshrc:
+DEFAULT_USER=`whoami`
+ZSH_THEME="agnoster"
+
+-Add of aliases, proxy config, environnements config, tools config
+
+-installation de iTerm2
+brew cask install iterm2
+=> Preferences -> Profiles -> Text -> Change Font -> Meslo L DZ Powerline
+=> Preferences -> Profiles -> Colors -> Load Presets -> Solarized dark
+
+-Installation de nvm
+brew install nvm
+=> dans .zprofile: source $(brew --prefix nvm)/nvm.sh
+nvm install 12
+nvm install 16
+nvm install 17
+nvm alias default 16
+
+-Installation de git
+brew install git
+=> Creer le fichier .gitconfig et y mettre:
+	[fetch]
+	    prune = true
+	[pull]
+	    rebase = true
+	[branch]
+	    autosetuprebase = always
+	[alias]
+	    tree = log --pretty=format:'%C(Yellow)%h%Creset -%C(auto)%d%C(reset) %s%x09 %C(magenta blink bold)<%an>%Creset %C(blue)(%cr)%Creset %C(blue dim)%ad%Creset' --graph --all
+
+-Installation de yarn
+brew install yarn --ignore-dependencies
+
+-Installation de java 17
+https://download.oracle.com/java/17/latest/jdk-17_macos-aarch64_bin.tar.gz
+
+-Installation de Maven
+https://dlcdn.apache.org/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.zip
+mv apache-maven.. ~/Library/
+
+-modification de ~/Library/apache-maven-3.9.1/conf/settings.xml
+=> Ajout de la conf de Proxy
+
+-Installation de pnpm
+brew install pnpm
+
+-Ajout de ma clé ssh gitlab sur mon poste
+ssh-keygen -t rsa -b 2048 -C "my laptop"
+tr -d '\n' < ~/.ssh/id_rsa.pub | pbcopy
+ssh -T git@gitlab.engie-cofely.net
+
+-Ajout de ma clé ssh gitlab sur bitbucket
+tr -d '\n' < ~/.ssh/id_rsa.pub | pbcopy
+
+-Telechargement de l'IDE inTelliJ
+
+-Installation de git credential manager (GCM)
+brew tap microsoft/git
+brew install --cask git-credential-manager-core
+
+-creer un fichier .npmrc à ~ et ajouter:
+shamefully-hoist=true
+strict-peer-dependencies=false
+strict-ssl=false
+
+-creer un .yarnrc à ~ et ajouter:
+"strict-ssl false"
+
+
+
+
+
+
+
+
+
