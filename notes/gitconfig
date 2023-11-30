@@ -1,0 +1,29 @@
+[url "https://"]
+    insteadOf = git://
+[user]
+    name = Moustapha Sene
+    email = moustapha.sene@engie.com
+[credential]
+    helper = osxkeychain
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[fetch]
+    prune = true
+[push]
+    autoSetupRemote = true
+[pull]
+    rebase = true
+[branch]
+    autosetuprebase = always
+[alias]
+    aliases =! git config -l | grep alias | cut -c 7-
+    tree = log --pretty=format:'%C(Yellow)%h%Creset -%C(auto)%d%C(reset) %s%x09 %C(magenta blink bold)<%an>%Creset %C(blue)(%cr)%Creset %C(blue dim)%ad%Creset' --graph --all
+    get = "!sh -c 'git checkout $0 && git pull'"
+    ca =! git add . && git commit --amend -C HEAD && git push -f
+    tej = "!sh -c 'git tag -d $0 && git push --delete origin $0 --force'"
+    wipe = "!sh -c 'git branch -D $0 && git push --delete origin $0'"
+[http "https://gitlab.engie-cofely.net/"]
+    proxy =
+    sslVerify = false
+[credential "https://dev.azure.com"]
+	useHttpPath = true
